@@ -98,7 +98,30 @@
     }, 350);
   }
 
+  // --- Dark Mode ---
+  const themeBtn = document.getElementById('theme-btn');
+  const themeIcon = themeBtn.querySelector('.theme-icon');
+
+  function getPreferredTheme() {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeIcon.textContent = theme === 'dark' ? '\u{2600}\u{FE0F}' : '\u{1F319}';
+    localStorage.setItem('theme', theme);
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  }
+
   // --- Init ---
+  applyTheme(getPreferredTheme());
+  themeBtn.addEventListener('click', toggleTheme);
   graveyardBtn.addEventListener('click', toggleGraveyard);
   await loadProjects();
 })();
