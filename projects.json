@@ -1,10 +1,10 @@
 {
   "active": [
     {
-      "name": "JTT",
+      "name": "J-Time-Tracker",
       "description": "개인 시간 추적 앱. 프로젝트별 작업 시간을 기록하고 분석합니다.",
       "url": "https://jtt.jeongph.dev",
-      "tags": ["TypeScript", "Monorepo"],
+      "tags": ["시간관리", "생산성"],
       "icon": "⏱️",
       "color": "#4ECDC4"
     },
@@ -12,7 +12,7 @@
       "name": "Vinnector",
       "description": "크리에이터와 편집자를 매칭하는 플랫폼.",
       "url": "https://vinnector.jeongph.dev",
-      "tags": ["TypeScript", "Monorepo"],
+      "tags": ["매칭", "크리에이터"],
       "icon": "🎬",
       "color": "#6CB4EE"
     },
@@ -20,7 +20,7 @@
       "name": "ChatGPT Viewer",
       "description": "ChatGPT 대화 내역을 보기 좋게 시각화하는 뷰어.",
       "url": "https://chatgpt-viewer.jeongph.dev/",
-      "tags": ["Web", "Viewer"],
+      "tags": ["AI 대화", "시각화"],
       "icon": "💬",
       "color": "#B983FF"
     },
@@ -28,15 +28,15 @@
       "name": "Today Message",
       "description": "랜덤 감성 응원 메시지를 생성하고 이미지로 저장할 수 있는 웹앱.",
       "url": "https://serendipity.jeongph.dev/",
-      "tags": ["React", "Vite"],
+      "tags": ["감성", "응원"],
       "icon": "💌",
       "color": "#FF6B6B"
     },
     {
       "name": "닉네임 생성기",
-      "description": "GPT를 활용한 랜덤 한글 닉네임 생성기.",
+      "description": "랜덤 한글 닉네임 생성기.",
       "url": "https://nickname-generator.jeongph.dev/",
-      "tags": ["Web", "GPT"],
+      "tags": ["닉네임", "랜덤"],
       "icon": "🎲",
       "color": "#FFD93D"
     },
@@ -44,7 +44,7 @@
       "name": "이름 로마자 변환기",
       "description": "한국어 이름을 로마자로 변환하는 도구.",
       "url": "https://romanizer.jeongph.dev/",
-      "tags": ["Web", "Tool"],
+      "tags": ["이름", "변환"],
       "icon": "🔤",
       "color": "#6BCB77"
     },
@@ -52,15 +52,15 @@
       "name": "WADM",
       "description": "가중 평균 의사결정 매트릭스. 여러 선택지를 기준별 가중치로 비교합니다.",
       "url": "https://wadm.jeongph.dev/",
-      "tags": ["Web", "Tool"],
+      "tags": ["의사결정", "비교분석"],
       "icon": "⚖️",
       "color": "#FFB347"
     },
     {
       "name": "만나이 계산기",
-      "description": "전 세계 나이 계산 방식을 비교하는 만나이 계산기.",
+      "description": "한국 나이를 글로벌 만나이로 변환하는 계산기.",
       "url": "https://global-age-calculator.jeongph.dev/",
-      "tags": ["Web", "Calculator"],
+      "tags": ["나이", "글로벌"],
       "icon": "🎂",
       "color": "#FF9BD2"
     }
