@@ -5,6 +5,7 @@
   let data = null;
   let isGraveyardMode = false;
   let currentSort = 'default';
+  const activeCards = new Map();
 
   // --- Data ---
   async function loadProjects() {
@@ -70,7 +71,13 @@
       return;
     }
     projects.forEach((project) => {
-      const card = isGraveyard ? createGraveyardCard(project) : createActiveCard(project);
+      let card;
+      if (!isGraveyard && activeCards.has(project.name)) {
+        card = activeCards.get(project.name);
+      } else {
+        card = isGraveyard ? createGraveyardCard(project) : createActiveCard(project);
+        if (!isGraveyard) activeCards.set(project.name, card);
+      }
       cardGrid.appendChild(card);
     });
   }
@@ -95,14 +102,41 @@
       btn.classList.toggle('active', btn.dataset.sort === sortType);
     });
 
-    cardGrid.classList.add('fade-out');
-    setTimeout(() => {
-      const sorted = sortProjects(data.active, sortType);
-      renderCards(sorted);
-      cardGrid.classList.remove('fade-out');
-      cardGrid.classList.add('fade-in');
-      setTimeout(() => cardGrid.classList.remove('fade-in'), 500);
-    }, 350);
+    const cards = [...cardGrid.children];
+
+    // FIRST: 현재 위치 기록
+    const firstRects = new Map();
+    cards.forEach((card) => firstRects.set(card, card.getBoundingClientRect()));
+
+    // DOM 재배치
+    const sorted = sortProjects(data.active, sortType);
+    sorted.forEach((project) => {
+      const card = activeCards.get(project.name);
+      if (card) cardGrid.appendChild(card);
+    });
+
+    // LAST → INVERT → PLAY
+    cards.forEach((card) => {
+      const first = firstRects.get(card);
+      const last = card.getBoundingClientRect();
+      const dx = first.left - last.left;
+      const dy = first.top - last.top;
+
+      if (dx === 0 && dy === 0) return;
+
+      card.style.transform = `translate(${dx}px, ${dy}px)`;
+      card.style.transition = 'none';
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+          card.style.transform = '';
+          card.addEventListener('transitionend', () => {
+            card.style.transition = '';
+          }, { once: true });
+        });
+      });
+    });
   }
 
   // --- Graveyard Toggle ---
