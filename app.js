@@ -4,6 +4,7 @@
 
   let data = null;
   let isGraveyardMode = false;
+  let currentSort = 'default';
 
   // --- Data ---
   async function loadProjects() {
@@ -74,9 +75,40 @@
     });
   }
 
+  // --- Sort ---
+  function sortProjects(projects, sortType) {
+    const sorted = [...projects];
+    if (sortType === 'name') {
+      sorted.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+    } else if (sortType === 'random') {
+      for (let i = sorted.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [sorted[i], sorted[j]] = [sorted[j], sorted[i]];
+      }
+    }
+    return sorted;
+  }
+
+  function applySort(sortType) {
+    currentSort = sortType;
+    document.querySelectorAll('.sort-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.sort === sortType);
+    });
+
+    cardGrid.classList.add('fade-out');
+    setTimeout(() => {
+      const sorted = sortProjects(data.active, sortType);
+      renderCards(sorted);
+      cardGrid.classList.remove('fade-out');
+      cardGrid.classList.add('fade-in');
+      setTimeout(() => cardGrid.classList.remove('fade-in'), 500);
+    }, 350);
+  }
+
   // --- Graveyard Toggle ---
   function toggleGraveyard() {
     isGraveyardMode = !isGraveyardMode;
+    const sortBar = document.getElementById('sort-bar');
     cardGrid.classList.add('fade-out');
 
     setTimeout(() => {
@@ -84,11 +116,17 @@
         document.body.classList.add('graveyard-mode');
         document.querySelector('.graveyard-text').textContent = 'Back';
         document.querySelector('.graveyard-icon').textContent = '\u{1F9F8}';
+        sortBar.style.display = 'none';
         renderCards(data.graveyard || [], true);
       } else {
         document.body.classList.remove('graveyard-mode');
         document.querySelector('.graveyard-text').textContent = 'Graveyard';
         document.querySelector('.graveyard-icon').textContent = '\u{1F47B}';
+        sortBar.style.display = '';
+        currentSort = 'default';
+        document.querySelectorAll('.sort-btn').forEach((btn) => {
+          btn.classList.toggle('active', btn.dataset.sort === 'default');
+        });
         renderCards(data.active);
       }
 
@@ -123,5 +161,10 @@
   applyTheme(getPreferredTheme());
   themeBtn.addEventListener('click', toggleTheme);
   graveyardBtn.addEventListener('click', toggleGraveyard);
+  document.getElementById('sort-bar').addEventListener('click', (e) => {
+    const btn = e.target.closest('.sort-btn');
+    if (!btn || isGraveyardMode) return;
+    applySort(btn.dataset.sort);
+  });
   await loadProjects();
 })();
