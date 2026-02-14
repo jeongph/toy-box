@@ -31,6 +31,38 @@
       "tags": ["React", "Vite"],
       "icon": "💌",
       "color": "#FF6B6B"
+    },
+    {
+      "name": "닉네임 생성기",
+      "description": "GPT를 활용한 랜덤 한글 닉네임 생성기.",
+      "url": "https://nickname-generator.jeongph.dev/",
+      "tags": ["Web", "GPT"],
+      "icon": "🎲",
+      "color": "#FFD93D"
+    },
+    {
+      "name": "이름 로마자 변환기",
+      "description": "한국어 이름을 로마자로 변환하는 도구.",
+      "url": "https://romanizer.jeongph.dev/",
+      "tags": ["Web", "Tool"],
+      "icon": "🔤",
+      "color": "#6BCB77"
+    },
+    {
+      "name": "WADM",
+      "description": "가중 평균 의사결정 매트릭스. 여러 선택지를 기준별 가중치로 비교합니다.",
+      "url": "https://wadm.jeongph.dev/",
+      "tags": ["Web", "Tool"],
+      "icon": "⚖️",
+      "color": "#FFB347"
+    },
+    {
+      "name": "만나이 계산기",
+      "description": "전 세계 나이 계산 방식을 비교하는 만나이 계산기.",
+      "url": "https://global-age-calculator.jeongph.dev/",
+      "tags": ["Web", "Calculator"],
+      "icon": "🎂",
+      "color": "#FF9BD2"
     }
   ],
   "graveyard": []
