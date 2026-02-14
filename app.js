@@ -1,74 +1,71 @@
 (async () => {
   const cardGrid = document.getElementById('card-grid');
   const graveyardBtn = document.getElementById('graveyard-btn');
-  const typingText = document.querySelector('.typing-text');
 
   let data = null;
   let isGraveyardMode = false;
 
-  function hexToRgb(hex) {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result
-      ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) }
-      : null;
+  // --- Data ---
+  async function loadProjects() {
+    const response = await fetch('projects.json');
+    data = await response.json();
+    renderCards(data.active);
   }
 
-  function typeText(text, el, speed = 50) {
-    return new Promise((resolve) => {
-      let i = 0;
-      const interval = setInterval(() => {
-        el.textContent += text[i];
-        i++;
-        if (i >= text.length) {
-          clearInterval(interval);
-          resolve();
-        }
-      }, speed);
-    });
+  // --- Safe DOM helpers ---
+  function el(tag, className, textContent) {
+    const e = document.createElement(tag);
+    if (className) e.className = className;
+    if (textContent) e.textContent = textContent;
+    return e;
   }
 
+  // --- Card Rendering ---
   function createActiveCard(project) {
     const a = document.createElement('a');
     a.className = 'card';
     a.href = project.url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
-    a.style.setProperty('--card-color', project.color);
-    const rgb = hexToRgb(project.color);
-    if (rgb) {
-      a.style.setProperty('--card-color-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
-    }
-    a.innerHTML = `
-      <span class="card-icon">${project.icon}</span>
-      <h2 class="card-name">${project.name}</h2>
-      <p class="card-description">${project.description}</p>
-      <div class="card-tags">${project.tags.map((tag) => `<span class="card-tag">${tag}</span>`).join('')}</div>
-    `;
+    a.style.setProperty('--card-accent', project.color);
+
+    a.appendChild(el('span', 'card-icon', project.icon));
+    a.appendChild(el('h2', 'card-name', project.name));
+    a.appendChild(el('p', 'card-description', project.description));
+
+    const tagsDiv = el('div', 'card-tags');
+    project.tags.forEach((tag) => tagsDiv.appendChild(el('span', 'card-tag', tag)));
+    a.appendChild(tagsDiv);
+
     return a;
   }
 
   function createGraveyardCard(project) {
-    const el = project.url ? document.createElement('a') : document.createElement('div');
-    el.className = 'card graveyard-card';
+    const card = project.url ? document.createElement('a') : document.createElement('div');
+    card.className = 'card graveyard-card';
     if (project.url) {
-      el.href = project.url;
-      el.target = '_blank';
-      el.rel = 'noopener noreferrer';
+      card.href = project.url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
     }
-    el.style.setProperty('--card-color', project.color || '#888');
-    el.innerHTML = `
-      <span class="card-icon">${project.icon || '\u{1FAA6}'}</span>
-      <h2 class="card-name">${project.name}</h2>
-      <p class="card-description">${project.description}</p>
-      <p class="card-epitaph">${project.period ? project.period + '. ' : ''}${project.epitaph || ''}</p>
-    `;
-    return el;
+    card.style.setProperty('--card-accent', project.color || '#888');
+
+    card.appendChild(el('span', 'card-icon', project.icon || '\u{1FAA6}'));
+    card.appendChild(el('h2', 'card-name', project.name));
+    card.appendChild(el('p', 'card-description', project.description));
+
+    const epitaphText = [project.period, project.epitaph].filter(Boolean).join(' ');
+    if (epitaphText) {
+      card.appendChild(el('p', 'card-epitaph', epitaphText));
+    }
+
+    return card;
   }
 
   function renderCards(projects, isGraveyard = false) {
-    cardGrid.innerHTML = '';
+    cardGrid.textContent = '';
     if (isGraveyard && projects.length === 0) {
-      cardGrid.innerHTML = '<p style="text-align:center;color:var(--text-dim);grid-column:1/-1;font-family:var(--font-mono);padding:3rem 0;">아직 묻힌 프로젝트가 없습니다... \u{1FAA6}</p>';
+      cardGrid.appendChild(el('p', 'empty-state', '\u{1F47B} no toys here yet...'));
       return;
     }
     projects.forEach((project) => {
@@ -77,6 +74,7 @@
     });
   }
 
+  // --- Graveyard Toggle ---
   function toggleGraveyard() {
     isGraveyardMode = !isGraveyardMode;
     cardGrid.classList.add('fade-out');
@@ -85,33 +83,22 @@
       if (isGraveyardMode) {
         document.body.classList.add('graveyard-mode');
         document.querySelector('.graveyard-text').textContent = 'Back';
-        if (data.graveyard && data.graveyard.length > 0) {
-          renderCards(data.graveyard, true);
-        } else {
-          renderCards([], true);
-        }
+        document.querySelector('.graveyard-icon').textContent = '\u{1F9F8}';
+        renderCards(data.graveyard || [], true);
       } else {
         document.body.classList.remove('graveyard-mode');
         document.querySelector('.graveyard-text').textContent = 'Graveyard';
+        document.querySelector('.graveyard-icon').textContent = '\u{1F47B}';
         renderCards(data.active);
       }
 
       cardGrid.classList.remove('fade-out');
       cardGrid.classList.add('fade-in');
-
-      setTimeout(() => {
-        cardGrid.classList.remove('fade-in');
-      }, 600);
-    }, 400);
+      setTimeout(() => cardGrid.classList.remove('fade-in'), 500);
+    }, 350);
   }
 
-  async function loadProjects() {
-    const response = await fetch('projects.json');
-    data = await response.json();
-    renderCards(data.active);
-  }
-
+  // --- Init ---
   graveyardBtn.addEventListener('click', toggleGraveyard);
-  loadProjects();
-  typeText("jeongph's projects", typingText);
+  await loadProjects();
 })();

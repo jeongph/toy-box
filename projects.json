@@ -6,7 +6,7 @@
       "url": "https://jtt.jeongph.dev",
       "tags": ["TypeScript", "Monorepo"],
       "icon": "⏱️",
-      "color": "#00ff88"
+      "color": "#4ECDC4"
     },
     {
       "name": "Vinnector",
@@ -14,7 +14,7 @@
       "url": "https://vinnector.jeongph.dev",
       "tags": ["TypeScript", "Monorepo"],
       "icon": "🎬",
-      "color": "#00ffff"
+      "color": "#6CB4EE"
     },
     {
       "name": "ChatGPT Viewer",
@@ -22,7 +22,7 @@
       "url": "https://chatgpt-viewer.jeongph.dev/",
       "tags": ["Web", "Viewer"],
       "icon": "💬",
-      "color": "#ff00ff"
+      "color": "#B983FF"
     },
     {
       "name": "Today Message",
@@ -30,7 +30,7 @@
       "url": "https://serendipity.jeongph.dev/",
       "tags": ["React", "Vite"],
       "icon": "💌",
-      "color": "#ff6b9d"
+      "color": "#FF6B6B"
     }
   ],
   "graveyard": []
