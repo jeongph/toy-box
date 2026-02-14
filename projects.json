@@ -3,7 +3,7 @@
     {
       "name": "JTT",
       "description": "개인 시간 추적 앱. 프로젝트별 작업 시간을 기록하고 분석합니다.",
-      "url": "https://github.com/jenxor/jtt-monorepo",
+      "url": "https://jtt.jeongph.dev",
       "tags": ["TypeScript", "Monorepo"],
       "icon": "⏱️",
       "color": "#00ff88"
@@ -11,7 +11,7 @@
     {
       "name": "Vinnector",
       "description": "크리에이터와 편집자를 매칭하는 플랫폼.",
-      "url": "https://github.com/jenxor/vinnector-monorepo",
+      "url": "https://vinnector.jeongph.dev",
       "tags": ["TypeScript", "Monorepo"],
       "icon": "🎬",
       "color": "#00ffff"
@@ -19,10 +19,18 @@
     {
       "name": "ChatGPT Viewer",
       "description": "ChatGPT 대화 내역을 보기 좋게 시각화하는 뷰어.",
-      "url": "https://github.com/jeongph/chatgpt-viewer",
+      "url": "https://chatgpt-viewer.jeongph.dev/",
       "tags": ["Web", "Viewer"],
       "icon": "💬",
       "color": "#ff00ff"
+    },
+    {
+      "name": "Today Message",
+      "description": "랜덤 감성 응원 메시지를 생성하고 이미지로 저장할 수 있는 웹앱.",
+      "url": "https://serendipity.jeongph.dev/",
+      "tags": ["React", "Vite"],
+      "icon": "💌",
+      "color": "#ff6b9d"
     }
   ],
   "graveyard": []

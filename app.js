@@ -113,5 +113,5 @@
 
   graveyardBtn.addEventListener('click', toggleGraveyard);
   loadProjects();
-  typeText('만들고, 실험하고, 때로는 묻어두는 공간.', typingText);
+  typeText("jeongph's projects", typingText);
 })();
