@@ -220,14 +220,14 @@
   let clickTimer = null;
 
   function getDesign() {
-    return localStorage.getItem('design') || 'retro';
+    return localStorage.getItem('design') || 'classic';
   }
 
   function applyDesign(design, animate = false) {
     const root = document.documentElement;
 
     if (animate) {
-      const msg = design === 'classic' ? 'ACCESS GRANTED...' : 'RETURNING TO MATRIX...';
+      const msg = design === 'retro' ? 'ENTERING THE MATRIX...' : 'ACCESS GRANTED...';
       glitchMessage.textContent = msg;
       glitchMessage.classList.add('active');
       glitchOverlay.classList.add('active');
