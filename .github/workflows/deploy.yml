@@ -32,10 +32,10 @@ jobs:
         run: |
           curl -s -X POST "${{ secrets.SLACK_WEBHOOK_URL }}" \
             -H 'Content-Type: application/json' \
-            -d "{\"text\":\"*toy-box* 배포 완료\n> 커밋: \`${GITHUB_SHA::7}\` by ${GITHUB_ACTOR}\n> ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}"
+            -d "{\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\":white_check_mark: *toy-box* 배포 성공\\n\\n:package: \`${GITHUB_SHA::7}\`  :bust_in_silhouette: ${GITHUB_ACTOR}\"}},{\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\":globe_with_meridians: 사이트 열기\"},\"url\":\"https://toy-box.jeongph.dev\"},{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\":github: Actions 로그\"},\"url\":\"${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}]}]}"
       - name: Slack 배포 실패 알림
         if: failure()
         run: |
           curl -s -X POST "${{ secrets.SLACK_WEBHOOK_URL }}" \
             -H 'Content-Type: application/json' \
-            -d "{\"text\":\"*toy-box* 배포 실패\n> 커밋: \`${GITHUB_SHA::7}\` by ${GITHUB_ACTOR}\n> ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}"
+            -d "{\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\":rotating_light: *toy-box* 배포 실패\\n\\n:package: \`${GITHUB_SHA::7}\`  :bust_in_silhouette: ${GITHUB_ACTOR}\"}},{\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\":github: Actions 로그 확인\"},\"url\":\"${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}]}]}"
