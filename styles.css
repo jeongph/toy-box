@@ -852,4 +852,16 @@ body.graveyard-mode .hero {
   .graveyard-text {
     display: none;
   }
+
+  [data-design="retro"] .hero-title {
+    font-size: clamp(0.6rem, 3vw, 0.9rem);
+  }
+
+  [data-design="retro"] .logo-text {
+    font-size: 0.55rem;
+  }
+
+  [data-design="retro"] .card-name {
+    font-size: 0.55rem;
+  }
 }
