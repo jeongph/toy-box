@@ -572,6 +572,193 @@ body.graveyard-mode .hero {
 }
 
 /* ===========================
+   Retro Theme Overrides
+   =========================== */
+
+/* --- Retro Hero --- */
+[data-design="retro"] .hero-wave {
+  display: none;
+}
+
+[data-design="retro"] .hero-cursor {
+  display: inline-block;
+  color: #00ff41;
+  animation: blink-cursor 0.8s step-end infinite;
+}
+
+[data-design="classic"] .hero-cursor {
+  display: none;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+[data-design="retro"] .hero-highlight {
+  background: linear-gradient(90deg, #00ff41, #00ffff, #ff00ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+  text-shadow: none;
+}
+
+[data-design="retro"] .hero-title {
+  font-size: clamp(0.9rem, 3vw, 1.4rem);
+  letter-spacing: 0.05em;
+}
+
+[data-design="retro"] .hero-sub {
+  font-size: 1.2rem;
+  color: #006622;
+  letter-spacing: 0.05em;
+}
+
+[data-design="retro"] .hero-prompt {
+  display: inline;
+  color: #00ff41;
+}
+
+[data-design="classic"] .hero-prompt {
+  display: none;
+}
+
+/* --- Retro Header --- */
+[data-design="retro"] .logo-emoji {
+  display: none;
+}
+
+[data-design="retro"] .logo-text {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: #00ff41;
+  letter-spacing: 0.1em;
+}
+
+[data-design="retro"] .logo-text::before {
+  content: '> ';
+  color: #006622;
+}
+
+[data-design="retro"] .logo-text::after {
+  content: '_';
+  animation: blink-cursor 0.8s step-end infinite;
+}
+
+[data-design="retro"] .theme-btn {
+  display: none;
+}
+
+[data-design="retro"] .graveyard-btn {
+  border-radius: 0;
+  border-color: var(--border);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+/* --- Retro Footer --- */
+[data-design="retro"] .footer-heart-classic {
+  display: none;
+}
+
+[data-design="retro"] .footer-heart-retro {
+  display: inline;
+  color: #ff4444;
+}
+
+[data-design="classic"] .footer-heart-retro {
+  display: none;
+}
+
+[data-design="retro"] .footer-prompt {
+  display: inline;
+  color: #006622;
+}
+
+[data-design="classic"] .footer-prompt {
+  display: none;
+}
+
+[data-design="retro"] footer {
+  border-color: #00ff4133;
+}
+
+[data-design="retro"] footer a {
+  color: #00ffff;
+}
+
+/* --- Retro Card --- */
+[data-design="retro"] .card {
+  border-radius: var(--border-radius-card);
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  transition: transform 0.2s ease,
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+
+[data-design="retro"] .card::before {
+  display: none;
+}
+
+[data-design="retro"] .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.15),
+              0 0 40px rgba(0, 255, 65, 0.05);
+  border-color: var(--card-accent);
+}
+
+[data-design="retro"] .card-name {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+[data-design="retro"] .card-description {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-sub);
+}
+
+[data-design="retro"] .card-icon {
+  font-size: 2rem;
+}
+
+/* --- Retro Tags --- */
+[data-design="retro"] .card-tag {
+  border-radius: var(--border-radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  border: 1px solid var(--card-accent);
+  background: transparent;
+}
+
+/* --- Retro Sort Bar --- */
+[data-design="retro"] .sort-btn {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border-radius: var(--border-radius-pill);
+  border: 1px solid var(--border);
+}
+
+[data-design="retro"] .sort-btn:hover {
+  border-color: #00ffff;
+  color: #00ffff;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+[data-design="retro"] .sort-btn.active {
+  border-color: #00ffff;
+  background: rgba(0, 255, 255, 0.1);
+  color: #00ffff;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+/* ===========================
    Responsive
    =========================== */
 @media (max-width: 640px) {
