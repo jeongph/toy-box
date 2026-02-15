@@ -759,6 +759,58 @@ body.graveyard-mode .hero {
 }
 
 /* ===========================
+   Design Switch Glitch Effect
+   =========================== */
+.glitch-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.glitch-overlay.active {
+  animation: glitch-flash 0.5s ease-out forwards;
+}
+
+@keyframes glitch-flash {
+  0% { opacity: 1; background: transparent; }
+  10% { background: rgba(0, 255, 65, 0.1); }
+  20% { background: transparent; clip-path: inset(20% 0 60% 0); }
+  30% { background: rgba(255, 0, 255, 0.08); clip-path: inset(50% 0 20% 0); }
+  40% { background: transparent; clip-path: inset(10% 0 70% 0); }
+  50% { background: rgba(0, 255, 255, 0.06); clip-path: none; }
+  70% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+.glitch-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(0.6rem, 2vw, 1rem);
+  color: #00ff41;
+  text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-message.active {
+  animation: glitch-msg 1.2s ease-out forwards;
+}
+
+@keyframes glitch-msg {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* ===========================
    Responsive
    =========================== */
 @media (max-width: 640px) {
