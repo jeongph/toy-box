@@ -68,7 +68,10 @@
       card.target = '_blank';
       card.rel = 'noopener noreferrer';
     }
-    card.style.setProperty('--card-accent', project.color || '#888');
+    const design = document.documentElement.getAttribute('data-design');
+    const baseColor = project.color || '#888';
+    const color = design === 'retro' ? (NEON_COLOR_MAP[baseColor] || baseColor) : baseColor;
+    card.style.setProperty('--card-accent', color);
 
     card.appendChild(el('span', 'card-icon', project.icon || '\u{1FAA6}'));
     card.appendChild(el('h2', 'card-name', project.name));
@@ -251,7 +254,7 @@
   function updateCardColors(design) {
     const map = design === 'retro' ? NEON_COLOR_MAP : CLASSIC_COLOR_MAP;
     document.querySelectorAll('.card').forEach((card) => {
-      const current = card.style.getPropertyValue('--card-accent');
+      const current = card.style.getPropertyValue('--card-accent').trim();
       const mapped = map[current];
       if (mapped) card.style.setProperty('--card-accent', mapped);
     });
@@ -296,8 +299,5 @@
   });
   await loadProjects();
 
-  // 초기 로드 후 카드 색상 매핑
-  if (savedDesign === 'retro') {
-    updateCardColors('retro');
-  }
+
 })();
