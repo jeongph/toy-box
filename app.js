@@ -7,6 +7,22 @@
   let currentSort = 'default';
   const activeCards = new Map();
 
+  // --- Design Theme Constants ---
+  const NEON_COLOR_MAP = {
+    '#4ECDC4': '#00ffff',
+    '#6CB4EE': '#4488ff',
+    '#B983FF': '#cc66ff',
+    '#FF6B6B': '#ff4444',
+    '#FFD93D': '#ffff00',
+    '#6BCB77': '#00ff41',
+    '#FFB347': '#ff8800',
+    '#FF9BD2': '#ff00ff',
+  };
+
+  const CLASSIC_COLOR_MAP = Object.fromEntries(
+    Object.entries(NEON_COLOR_MAP).map(([k, v]) => [v, k])
+  );
+
   // --- Data ---
   async function loadProjects() {
     const response = await fetch('projects.json');
@@ -29,7 +45,9 @@
     a.href = project.url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
-    a.style.setProperty('--card-accent', project.color);
+    const design = document.documentElement.getAttribute('data-design');
+    const color = design === 'retro' ? (NEON_COLOR_MAP[project.color] || project.color) : project.color;
+    a.style.setProperty('--card-accent', color);
 
     a.appendChild(el('span', 'card-icon', project.icon));
     a.appendChild(el('h2', 'card-name', project.name));
@@ -50,7 +68,10 @@
       card.target = '_blank';
       card.rel = 'noopener noreferrer';
     }
-    card.style.setProperty('--card-accent', project.color || '#888');
+    const design = document.documentElement.getAttribute('data-design');
+    const baseColor = project.color || '#888';
+    const color = design === 'retro' ? (NEON_COLOR_MAP[baseColor] || baseColor) : baseColor;
+    card.style.setProperty('--card-accent', color);
 
     card.appendChild(el('span', 'card-icon', project.icon || '\u{1FAA6}'));
     card.appendChild(el('h2', 'card-name', project.name));
@@ -191,14 +212,92 @@
     applyTheme(current === 'dark' ? 'light' : 'dark');
   }
 
+  // --- Design Theme (Easter Egg) ---
+  const glitchOverlay = document.getElementById('glitch-overlay');
+  const glitchMessage = document.getElementById('glitch-message');
+  const logo = document.querySelector('.logo');
+  let clickCount = 0;
+  let clickTimer = null;
+
+  function getDesign() {
+    return localStorage.getItem('design') || 'retro';
+  }
+
+  function applyDesign(design, animate = false) {
+    const root = document.documentElement;
+
+    if (animate) {
+      const msg = design === 'classic' ? 'ACCESS GRANTED...' : 'RETURNING TO MATRIX...';
+      glitchMessage.textContent = msg;
+      glitchMessage.classList.add('active');
+      glitchOverlay.classList.add('active');
+
+      setTimeout(() => {
+        root.setAttribute('data-design', design);
+        updateCardColors(design);
+        updateThemeForDesign(design);
+      }, 300);
+
+      setTimeout(() => {
+        glitchOverlay.classList.remove('active');
+        glitchMessage.classList.remove('active');
+      }, 1200);
+    } else {
+      root.setAttribute('data-design', design);
+      updateCardColors(design);
+      updateThemeForDesign(design);
+    }
+
+    localStorage.setItem('design', design);
+  }
+
+  function updateCardColors(design) {
+    const map = design === 'retro' ? NEON_COLOR_MAP : CLASSIC_COLOR_MAP;
+    document.querySelectorAll('.card').forEach((card) => {
+      const current = card.style.getPropertyValue('--card-accent').trim();
+      const mapped = map[current];
+      if (mapped) card.style.setProperty('--card-accent', mapped);
+    });
+  }
+
+  function updateThemeForDesign(design) {
+    const themeBtn = document.getElementById('theme-btn');
+    if (design === 'retro') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeBtn.style.display = 'none';
+    } else {
+      themeBtn.style.display = '';
+      applyTheme(getPreferredTheme());
+    }
+  }
+
+  function handleLogoClick(e) {
+    e.preventDefault();
+    clickCount++;
+    clearTimeout(clickTimer);
+    clickTimer = setTimeout(() => { clickCount = 0; }, 1500);
+
+    if (clickCount >= 5) {
+      clickCount = 0;
+      const current = getDesign();
+      const next = current === 'retro' ? 'classic' : 'retro';
+      applyDesign(next, true);
+    }
+  }
+
   // --- Init ---
+  const savedDesign = getDesign();
+  applyDesign(savedDesign, false);
   applyTheme(getPreferredTheme());
   themeBtn.addEventListener('click', toggleTheme);
   graveyardBtn.addEventListener('click', toggleGraveyard);
+  logo.addEventListener('click', handleLogoClick);
   document.getElementById('sort-bar').addEventListener('click', (e) => {
     const btn = e.target.closest('.sort-btn');
     if (!btn || isGraveyardMode) return;
     applySort(btn.dataset.sort);
   });
   await loadProjects();
+
+
 })();

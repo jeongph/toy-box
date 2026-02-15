@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-design="retro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,11 +20,13 @@
   <meta name="twitter:image" content="https://toy-box.jeongph.dev/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="bg-dots"></div>
+  <div class="glitch-overlay" id="glitch-overlay"></div>
+  <div class="glitch-message" id="glitch-message"></div>
 
   <header>
     <a href="/" class="logo">
@@ -46,9 +48,12 @@
     <section class="hero">
       <h1 class="hero-title">
         <span class="hero-wave">👋</span>
+        <span class="hero-cursor">▌</span>
         jeongph's <span class="hero-highlight">toy box</span>
       </h1>
-      <p class="hero-sub">side projects & fun experiments</p>
+      <p class="hero-sub">
+        <span class="hero-prompt">&gt; </span>side projects & fun experiments
+      </p>
     </section>
 
     <div class="sort-bar" id="sort-bar">
@@ -61,7 +66,9 @@
   </main>
 
   <footer>
-    <p>Made with 🩶 by <a href="https://about.jeongph.dev/" target="_blank" rel="noopener">jeongph</a></p>
+    <p>
+      <span class="footer-prompt">$ </span>Made with <span class="footer-heart-classic">🩶</span><span class="footer-heart-retro">&lt;3</span> by <a href="https://about.jeongph.dev/" target="_blank" rel="noopener">jeongph</a>
+    </p>
   </footer>
 
   <script src="app.js"></script>
