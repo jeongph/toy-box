@@ -559,6 +559,29 @@ body.graveyard-mode .hero {
   opacity: 0.6;
 }
 
+[data-design="retro"].graveyard-mode {
+  --bg: #0a0008;
+  --bg-dots: #150010;
+  --border: #cc66ff33;
+  --header-bg: rgba(10, 0, 8, 0.92);
+}
+
+[data-design="retro"] .card.graveyard-card {
+  filter: grayscale(0.7) opacity(0.6);
+  border-style: dashed;
+  border-color: #cc66ff33;
+}
+
+[data-design="retro"] .card.graveyard-card:hover {
+  filter: grayscale(0) opacity(1);
+  box-shadow: 0 0 15px rgba(204, 102, 255, 0.2);
+}
+
+[data-design="retro"] .card-epitaph {
+  color: #cc66ff;
+  border-top-color: #cc66ff33;
+}
+
 /* ===========================
    Empty state
    =========================== */
