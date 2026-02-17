@@ -548,7 +548,7 @@ body.graveyard-mode {
   --header-bg: rgba(243, 240, 248, 0.85);
 }
 
-[data-theme="dark"].graveyard-mode {
+[data-theme="dark"] body.graveyard-mode {
   --bg: #1a1528;
   --bg-dots: #251e38;
   --border: #352d4a;
@@ -559,7 +559,7 @@ body.graveyard-mode .hero {
   opacity: 0.6;
 }
 
-[data-design="retro"].graveyard-mode {
+[data-design="retro"] body.graveyard-mode {
   --bg: #0a0008;
   --bg-dots: #150010;
   --border: #cc66ff33;
