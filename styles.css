@@ -467,6 +467,21 @@ footer a:hover {
   flex: 1;
 }
 
+.card-platform {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.15rem 0.55rem;
+  border-radius: 50px;
+  border: 1.5px solid var(--text-dim);
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+
 .card-tags {
   display: flex;
   flex-wrap: wrap;
@@ -749,6 +764,15 @@ body.graveyard-mode .hero {
 
 [data-design="retro"] .card-icon {
   font-size: 2rem;
+}
+
+/* --- Retro Platform Badge --- */
+[data-design="retro"] .card-platform {
+  border-radius: 0;
+  border-color: var(--card-accent);
+  color: var(--card-accent);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
 }
 
 /* --- Retro Tags --- */

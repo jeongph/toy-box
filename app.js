@@ -49,6 +49,10 @@
     const color = design === 'retro' ? (NEON_COLOR_MAP[project.color] || project.color) : project.color;
     a.style.setProperty('--card-accent', color);
 
+    if (project.platform) {
+      a.appendChild(el('span', 'card-platform', project.platform));
+    }
+
     a.appendChild(el('span', 'card-icon', project.icon));
     a.appendChild(el('h2', 'card-name', project.name));
     a.appendChild(el('p', 'card-description', project.description));

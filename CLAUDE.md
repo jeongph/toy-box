@@ -50,6 +50,7 @@
     "description": "string",
     "url": "string",
     "tags": ["string"],
+    "platform": "Web | PWA | App",
     "icon": "emoji",
     "color": "#XXXXXX"
   }],
