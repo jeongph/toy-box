@@ -384,7 +384,7 @@ footer a:hover {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
   text-decoration: none;
   color: inherit;
   position: relative;
@@ -444,23 +444,31 @@ footer a:hover {
 
 /* Card OG Image */
 .card-og-image {
-  width: 100%;
   aspect-ratio: 2 / 1;
   object-fit: cover;
   border-radius: 18px 18px 0 0;
   margin: -1.75rem -1.75rem 0 -1.75rem;
   width: calc(100% + 3.5rem);
   display: block;
+  transform: scale(1.5);
 }
 
 [data-design="retro"] .card-og-image {
   border-radius: 0;
 }
 
+/* Card Header (icon + title inline) */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 /* Card elements */
 .card-icon {
-  font-size: 2.2rem;
+  font-size: 1.3rem;
   line-height: 1;
+  flex-shrink: 0;
   transition: transform 0.35s var(--ease-bounce);
 }
 
