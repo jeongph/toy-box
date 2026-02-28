@@ -26,8 +26,7 @@
       "tags": ["AI 대화", "시각화"],
       "platform": "Web",
       "icon": "💬",
-      "color": "#B983FF",
-      "ogImage": "https://toy-box.jeongph.dev/og-chatgpt-viewer.png"
+      "color": "#B983FF"
     },
     {
       "name": "Today Message",
@@ -36,8 +35,7 @@
       "tags": ["감성", "응원"],
       "platform": "Web",
       "icon": "💌",
-      "color": "#FF6B6B",
-      "ogImage": "https://serendipity.jeongph.dev/og-image.png"
+      "color": "#FF6B6B"
     },
     {
       "name": "닉네임 생성기",
@@ -56,8 +54,7 @@
       "tags": ["이름", "변환"],
       "platform": "Web",
       "icon": "🔤",
-      "color": "#6BCB77",
-      "ogImage": "https://romanizer.jeongph.dev/og-image.png"
+      "color": "#6BCB77"
     },
     {
       "name": "WADM",
@@ -66,8 +63,7 @@
       "tags": ["의사결정", "비교분석"],
       "platform": "Web",
       "icon": "⚖️",
-      "color": "#FFB347",
-      "ogImage": "https://wadm.jeongph.dev/og-image.png"
+      "color": "#FFB347"
     },
     {
       "name": "만나이 계산기",
