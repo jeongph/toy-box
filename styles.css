@@ -380,7 +380,7 @@ footer a:hover {
   background: var(--card-bg);
   border: 2px solid var(--border);
   border-radius: 20px;
-  padding: 1.75rem;
+  padding: 0 1.25rem 1.25rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -444,11 +444,11 @@ footer a:hover {
 
 /* Card OG Image */
 .card-og-image {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 18px 18px 0 0;
-  margin: -1.75rem -1.75rem 0 -1.75rem;
-  width: calc(100% + 3.5rem);
+  width: calc(100% + 2.5rem);
+  margin: 0 -1.25rem;
   display: block;
 }
 
@@ -461,6 +461,7 @@ footer a:hover {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  margin-top: 0.25rem;
 }
 
 /* Card elements */
@@ -491,8 +492,8 @@ footer a:hover {
 
 .card-platform {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  top: 0.6rem;
+  right: 0.6rem;
   font-family: var(--font-display);
   font-size: 0.65rem;
   font-weight: 600;
