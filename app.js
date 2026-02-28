@@ -67,8 +67,10 @@
       a.appendChild(el('span', 'card-platform', project.platform));
     }
 
-    a.appendChild(el('span', 'card-icon', project.icon));
-    a.appendChild(el('h2', 'card-name', project.name));
+    const header = el('div', 'card-header');
+    header.appendChild(el('span', 'card-icon', project.icon));
+    header.appendChild(el('h2', 'card-name', project.name));
+    a.appendChild(header);
     a.appendChild(el('p', 'card-description', project.description));
 
     const tagsDiv = el('div', 'card-tags');
