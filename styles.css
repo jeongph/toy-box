@@ -442,6 +442,21 @@ footer a:hover {
 .card:nth-child(7) { animation-delay: 0.58s; }
 .card:nth-child(8) { animation-delay: 0.66s; }
 
+/* Card OG Image */
+.card-og-image {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  border-radius: 18px 18px 0 0;
+  margin: -1.75rem -1.75rem 0 -1.75rem;
+  width: calc(100% + 3.5rem);
+  display: block;
+}
+
+[data-design="retro"] .card-og-image {
+  border-radius: 0;
+}
+
 /* Card elements */
 .card-icon {
   font-size: 2.2rem;
