@@ -444,7 +444,7 @@ footer a:hover {
 
 /* Card OG Image */
 .card-og-image {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 8 / 5;
   object-fit: cover;
   border-radius: 18px 18px 0 0;
   width: calc(100% + 2.5rem);
