@@ -16,7 +16,8 @@
       "tags": ["매칭", "크리에이터"],
       "platform": "Web",
       "icon": "🎬",
-      "color": "#6CB4EE"
+      "color": "#6CB4EE",
+      "ogImage": "https://vinnector.jeongph.dev/opengraph-image"
     },
     {
       "name": "ChatGPT Viewer",
@@ -43,7 +44,8 @@
       "tags": ["닉네임", "랜덤"],
       "platform": "Web",
       "icon": "🎲",
-      "color": "#FFD93D"
+      "color": "#FFD93D",
+      "ogImage": "https://nickname-generator.jeongph.dev/og-image.png"
     },
     {
       "name": "이름 로마자 변환기",

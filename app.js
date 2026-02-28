@@ -39,6 +39,8 @@
   }
 
   // --- Card Rendering ---
+  const DEFAULT_OG_IMAGE = 'og-image.png';
+
   function createActiveCard(project) {
     const a = document.createElement('a');
     a.className = 'card';
@@ -48,6 +50,18 @@
     const design = document.documentElement.getAttribute('data-design');
     const color = design === 'retro' ? (NEON_COLOR_MAP[project.color] || project.color) : project.color;
     a.style.setProperty('--card-accent', color);
+
+    const img = document.createElement('img');
+    img.className = 'card-og-image';
+    img.src = project.ogImage || DEFAULT_OG_IMAGE;
+    img.alt = project.name;
+    img.loading = 'lazy';
+    img.onerror = () => {
+      if (!img.src.endsWith(DEFAULT_OG_IMAGE)) {
+        img.src = DEFAULT_OG_IMAGE;
+      }
+    };
+    a.appendChild(img);
 
     if (project.platform) {
       a.appendChild(el('span', 'card-platform', project.platform));
