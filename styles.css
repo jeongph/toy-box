@@ -499,8 +499,10 @@ footer a:hover {
   font-weight: 600;
   padding: 0.15rem 0.55rem;
   border-radius: 50px;
-  border: 1.5px solid var(--text-dim);
-  color: var(--text-dim);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
   letter-spacing: 0.03em;
   line-height: 1.4;
 }
@@ -792,8 +794,10 @@ body.graveyard-mode .hero {
 /* --- Retro Platform Badge --- */
 [data-design="retro"] .card-platform {
   border-radius: 0;
-  border-color: var(--card-accent);
+  border: 1.5px solid var(--card-accent);
   color: var(--card-accent);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   font-family: var(--font-body);
   font-size: 0.85rem;
 }
