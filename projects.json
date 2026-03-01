@@ -57,7 +57,8 @@
       "tags": ["이름", "변환"],
       "platform": "Web",
       "icon": "🔤",
-      "color": "#6BCB77"
+      "color": "#6BCB77",
+      "ogImage": "https://romanizer.jeongph.dev/og-image.png"
     },
     {
       "name": "WADM",
