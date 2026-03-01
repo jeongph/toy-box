@@ -7,8 +7,7 @@
       "tags": ["시간관리", "생산성"],
       "platform": "PWA",
       "icon": "⏱️",
-      "color": "#4ECDC4",
-      "ogImage": "https://jtt.jeongph.dev/og-image.png"
+      "color": "#4ECDC4"
     },
     {
       "name": "Vinnector",
