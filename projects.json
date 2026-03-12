@@ -1,14 +1,14 @@
 {
   "active": [
     {
-      "name": "J-Time-Tracker",
-      "description": "개인 시간 추적 앱. 프로젝트별 작업 시간을 기록하고 분석합니다.",
-      "url": "https://jtt.jeongph.dev",
+      "name": "Fond",
+      "description": "좋아하는 일에 시간을 쓰세요.",
+      "url": "https://fond.jeongph.dev",
       "tags": ["시간관리", "생산성"],
       "platform": "PWA",
       "icon": "⏱️",
       "color": "#4ECDC4",
-      "ogImage": "https://jtt.jeongph.dev/og-image.png"
+      "ogImage": "https://fond.jeongph.dev/og-image.png"
     },
     {
       "name": "Vinnector",
