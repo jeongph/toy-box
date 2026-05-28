@@ -3,12 +3,12 @@
     {
       "name": "Fond",
       "description": "좋아하는 일에 시간을 쓰세요.",
-      "url": "https://fond.jeongph.dev",
+      "url": "https://fond.today",
       "tags": ["시간관리", "생산성"],
       "platform": "PWA",
       "icon": "⏱️",
       "color": "#4ECDC4",
-      "ogImage": "https://fond.jeongph.dev/og-image.png"
+      "ogImage": "https://fond.today/og-image.png"
     },
     {
       "name": "Vinnector",
