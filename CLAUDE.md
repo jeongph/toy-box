@@ -11,7 +11,7 @@
 - CSS3 (커스텀 프로퍼티, Grid, FLIP 애니메이션)
 - HTML5 (시맨틱 마크업)
 - 빌드 도구/패키지 매니저 없음 (zero-dependency)
-- 폰트: Fredoka (디스플레이), Nunito (본문) — Google Fonts CDN
+- 폰트: Fredoka (디스플레이)와 Nunito (본문)를 Google Fonts CDN에서 불러옴
 
 ## 프로젝트 구조
 ```
@@ -37,9 +37,9 @@
 - **Dark Mode**: localStorage 저장, 시스템 설정 감지
 
 ### styles.css 테마
-- `:root` — 라이트 테마 변수
-- `[data-theme="dark"]` — 다크 테마 변수
-- `body.graveyard-mode` — 묘지 모드 스타일
+- `:root`: 라이트 테마 변수
+- `[data-theme="dark"]`: 다크 테마 변수
+- `body.graveyard-mode`: 묘지 모드 스타일
 - 카드 색상: 8가지 시맨틱 컬러 (red, teal, yellow, green, purple, pink, blue, orange)
 
 ### projects.json 스키마
@@ -79,7 +79,7 @@ python3 -m http.server 8000
 ```
 
 ### 배포
-main 브랜치에 push하면 GitHub Actions가 자동으로 GitHub Pages에 배포한다. 별도 빌드 스텝 없이 파일이 그대로 배포된다.
+main 브랜치에 푸시하면 GitHub Actions가 자동으로 GitHub Pages에 배포한다. 별도 빌드 스텝 없이 파일이 그대로 배포된다.
 
 ## 코드 컨벤션
 - JavaScript: async IIFE 래핑, `el()` 헬퍼로 DOM 생성, `// --- Section ---` 주석 구분
